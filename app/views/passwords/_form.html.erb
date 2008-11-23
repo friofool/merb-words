@@ -1,0 +1,12 @@
+<%= mui_grid(:columns => 2) do %>
+  <%= mui_cell do %>
+    <%= mui_block do %>
+      <%= mui_password(:password, :focus => true, :title => 'Password') %>
+    <% end =%>
+  <% end =%>
+  <%= mui_cell do %>
+    <%= mui_block do %>
+      <%= mui_password(:password_confirmation, :title => 'Confirmation') %>
+    <% end =%>
+  <% end =%>
+<% end =%>

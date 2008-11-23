@@ -1,0 +1,8 @@
+<%= mui_window(:title => 'Create Page') do %>
+  <%= mui_form(:page, :action => slice_url(:create)) do %>
+    <%= partial(:form) %>
+    <%= mui_block do %>
+      <%= mui_button(:title => 'Create', :submit => true, :tone => 'positive')%>
+    <% end =%>
+  <% end =%>
+<% end =%>

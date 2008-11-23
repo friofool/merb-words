@@ -1,0 +1,14 @@
+<%= mui_block do %>
+  <%= mui_page_truncate(:body => page.body) %>
+<% end =%>
+<%= mui_grid(:columns => 2, :width => '100%') do %>
+  <%= mui_cell do %>
+    <%= mui_button(:title => 'Read &rarr;', :tone => 'positive', :url => slice_url(:read, :page_id => page.id)) %>
+  <% end =%>
+  <% if mui_password? %>
+    <%= mui_cell(:align => 'right') do %>
+      <%= mui_button(:title => 'Update', :url => slice_url(:update, :page_id => page.id), :window => 'open') %>
+      <%= mui_button(:title => 'Delete', :tone => 'negative', :url => slice_url(:delete, :page_id => page.id), :window => 'open') %>
+    <% end =%>
+  <% end %>
+<% end =%>

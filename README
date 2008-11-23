@@ -1,0 +1,49 @@
+Merb Words
+
+Merb Publishing for Your Words
+
+------------------------------------------------------------------------------
+
+To see all available tasks for Merb Words run:
+
+rake -T slices:merb_words
+
+------------------------------------------------------------------------------
+
+Instructions for installation:
+
+file: config/dependencies.rb
+
+# add the slice as a regular dependency
+
+dependency 'merb-words'
+
+# optionally configure the plugins in a before_app_loads callback
+
+Merb::BootLoader.before_app_loads do
+
+  Merb::Slices::config[:merb_words][:option] = value
+
+end
+
+file: config/router.rb
+
+# add the slice
+
+slice(:merb_words)
+
+# run the following rake task:
+
+rake slices:merb_words:install
+
+------------------------------------------------------------------------------
+
+You can put your application-level overrides in:
+
+host-app/slices/merb-words/app - controllers, models, views ...
+
+Templates are located in this order:
+
+1. host-app/slices/merb-words/app/views/*
+2. gems/merb-words/app/views/*
+3. host-app/app/views/*

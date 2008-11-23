@@ -1,0 +1,8 @@
+<%= mui_window(:title => 'Create Category') do %>
+  <%= mui_form(:category, :action => slice_url(:category_create)) do %>
+    <%= partial(:form) %>
+    <%= mui_block do %>
+      <%= mui_button(:title => 'Create', :submit => true, :tone => 'positive')%>
+    <% end =%>
+  <% end =%>
+<% end =%>

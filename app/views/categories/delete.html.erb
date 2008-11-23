@@ -1,0 +1,8 @@
+<%= mui_window(:title => 'Delete Category') do %>
+  <%= mui_block do %>Are you sure that you want to delete <%= @category.title %>?<% end =%>
+  <%= mui_block do %>
+    <%= mui_form(:category, :action => slice_url(:category_delete, :category_id => @category.id)) do %>
+      <%= mui_button(:title => 'Delete', :submit => true, :tone => 'negative') %>
+    <% end =%>
+  <% end =%>
+<% end =%>

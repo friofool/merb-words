@@ -1,0 +1,26 @@
+<%= mui_grid(:cell_valign => 'bottom', :columns => 3) do %>
+  <%= mui_cell(:width => '100%') do %>
+    <%= mui_block do %>
+      <%= mui_link(:title => page.title, :title_size => '1.5em', :url => slice_url(:read, :page_id => page.id)) %>
+    <% end =%>
+  <% end =%>
+  <%= mui_cell(:wrap => false) do %>
+    <%= mui_block do %>
+      <%= mui_date_span(:created => page.created_at, :updated => page.updated_at) %>
+    <% end =%>
+  <% end =%>
+  <% if merb_words_password? %>
+    <%= mui_cell(:wrap => false) do %>
+      <%= mui_block do %>
+        <% if page.publish == false %>
+          <i>unpublished</i>&nbsp;
+        <% end %>
+        <%= mui_button(:title => 'Update', :url => slice_url(:update, :page_id => page.id), :window => 'open') %>
+        <%= mui_button(:title => '&#215;', :tone => 'negative', :url => slice_url(:delete, :page_id => page.id), :window => 'open') %>
+      <% end =%>
+    <% end =%>
+  <% end %>
+<% end =%>
+<%= mui_block do %>
+  <%= merb_words_truncate(:body => page.body) %>
+<% end =%>

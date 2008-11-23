@@ -1,0 +1,21 @@
+<%
+  attributes = {}
+  attributes[:order_property] = params[:order_property]
+%>
+<%= mui_block do %>
+  <%= mui_search(:action => slice_url(:index, attributes), :width => '10em') %>
+<% end =%>
+<% if searches = session[:mui_searches] %>
+  <% searches.each do |search| %>
+    <% attributes[:search] = CGI.unescape(search) %>
+    <%= mui_grid(:columns => 2, :width => '100%') do %>
+      <%= mui_cell do %>
+        <%= mui_link(:title => CGI.unescape(search), :title_size => '0.85em', :url => slice_url(:index, attributes)) %>
+      <% end =%>
+      <%= mui_cell(:align => 'right', :wrap => false) do %>
+        &nbsp;
+        <%= mui_button(:title => '&#215;', :tone => 'negative', :url => slice_url(:search_delete, :search => search)) %>
+      <% end =%>
+    <% end =%>
+  <% end %>
+<% end %>

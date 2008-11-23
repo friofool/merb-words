@@ -1,0 +1,34 @@
+<%= merb_words_password_status %>
+<%= mui_grid(:columns => 2, :width => '100%') do %>
+  <%= mui_cell(:width => '75%') do %>
+    <%= mui_grid(:cell_valign => 'bottom', :columns => 2) do %>
+      <%= mui_cell(:width => '100%') do %>
+        <%= mui_block(:title => merb_words_title, :title_size => '3em')%>
+      <% end =%>
+      <% if merb_words_password? %>
+        <%= mui_cell(:wrap => false) do %>
+          <%= mui_block do %>
+            <%= mui_button(:title => 'Create', :url => slice_url(:create), :window => 'open') %>
+          <% end =%>
+        <% end =%>
+      <% end %>
+    <% end =%>
+    <%= mui_divider %>
+    <% if @pages %>
+      <% throw_content :feeds do %>
+        <link href="<%= slice_url :feed %>" rel="alternate" title="RSS" type="application/rss+xml"/>
+      <% end %>
+      <% @pages.each do |page| %>
+        <%= partial(:page, :page => page) %>
+        <%= mui_divider %>
+      <% end %>
+    <% end %>
+  <% end =%>
+  <%= mui_cell(:width => '25%') do %>
+    <%= mui_block(:type => 'tray') do %>
+      <%= partial(:search, :searches => @searches) if @pages %>
+      <%= partial(:order, :orders => @orders, :order_property => @order_property) if @orders %>
+      <%= partial(:category, :categories => @categories, :category_id => @category_id) %>
+    <% end =%>
+  <% end =%>
+<% end =%>

@@ -1,0 +1,41 @@
+<%
+  attributes = {}
+  attributes[:order_property] = params[:order_property]
+%>
+<%= mui_divider %>
+<%= mui_grid(:columns => 2) do %>
+  <%= mui_cell(:width => '100%') do %>
+    <%= mui_block(:title => 'Categories', :title_size => '1em') %>
+  <% end =%>
+  <% if merb_words_password? %>
+    <%= mui_cell(:align => 'right', :valign => 'bottom') do %>
+      <%= mui_button(:title => 'Create', :url => slice_url(:category_create), :window => 'open') %>
+    <% end =%>
+  <% end %>
+<% end =%>
+<% if category_id %>
+  <%= mui_link(:title => 'All', :title_size => '0.85em', :url => slice_url(:index, attributes)) %>
+<% else %>
+  <span style="font-size:0.85em;">All</span>
+<% end %>
+<% if categories %>
+  <% categories.each do |category| %>
+    <%= mui_grid(:columns => 2, :width => '100%') do %>
+      <%= mui_cell do %>
+        <% if category_id.to_i == category.id %>
+          <span style="font-size:0.85em;"><%= category.title %></span>
+        <% else %>
+          <% attributes[:category_id] = category.id %>
+          <%= mui_link(:title => category.title, :title_size => '0.85em', :url => slice_url(:index, attributes)) %>
+        <% end %>
+      <% end =%>
+      <% if merb_words_password? %>
+        <%= mui_cell(:align => 'right', :wrap => false) do %>
+          &nbsp;
+          <%= mui_button(:title => 'Update', :url => slice_url(:category_update, :category_id => category.id), :window => 'open') %>
+          <%= mui_button(:title => '&#215;', :tone => 'negative', :url => slice_url(:category_delete, :category_id => category.id), :window => 'open') %>
+        <% end =%>
+      <% end %>
+    <% end =%>
+  <% end %>
+<% end %>

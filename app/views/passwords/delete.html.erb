@@ -1,0 +1,6 @@
+<%= mui_window(:title => 'Delete Password') do %>
+  <%= mui_block do %>Are you sure that you want to delete your password?<% end =%>
+  <%= mui_block do %>
+    <%= mui_delete(:title => 'Delete', :url => slice_url(:password_delete)) %>
+  <% end =%>
+<% end =%>

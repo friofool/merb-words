@@ -1,0 +1,8 @@
+<%= mui_window(:title => 'Update Page') do %>
+  <%= mui_form(:page, :action => slice_url(:update, :page_id => @page.id)) do %>
+    <%= partial(:form) %>
+    <%= mui_block do %>
+      <%= mui_button(:title => 'Update', :submit => true, :tone => 'positive')%>
+    <% end =%>
+  <% end =%>
+<% end =%>

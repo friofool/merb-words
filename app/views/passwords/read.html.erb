@@ -1,0 +1,10 @@
+<%= mui_window(:title => 'Enter Password') do %>
+  <%= mui_form(:password, :action => slice_url(:password_read)) do %>
+    <%= mui_block do %>
+      <%= mui_password(:password, :focus => true, :title => 'Password') %>
+    <% end =%>
+    <%= mui_block do %>
+      <%= mui_button(:title => 'Enter', :submit => true, :tone => 'positive')%>
+    <% end =%>
+  <% end =%>
+<% end =%>

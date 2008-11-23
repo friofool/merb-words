@@ -1,0 +1,29 @@
+<%= mui_grid(:columns => 2) do %>
+  <%= mui_cell do %>
+    <%= mui_block do %>
+      <%= mui_text(:title, :focus => true, :title => 'Title', :width => '23em') %>
+    <% end =%>
+  <% end =%>
+  <%= mui_cell do %>
+    <%= mui_block do %>
+      <%= mui_date(:created_at, :title => 'Date') %>
+    <% end =%>
+  <% end =%>
+<% end =%>
+<%= mui_grid(:columns => 2) do %>
+  <%= mui_cell do %>
+    <%= mui_block do %>
+      <%= mui_hyper_text(:body, :title => 'Body') %>
+    <% end =%>
+  <% end =%>
+  <% if Category.first %>
+    <%= mui_cell do %>
+      <%= mui_block do %>
+        <%= merb_words_categories(:categories => @page.categories) %>
+      <% end =%>
+    <% end =%>
+  <% end %>
+<% end =%>
+<%= mui_block do %>
+	<%= mui_check(:publish, :title => 'Publish') %>
+<% end =%>

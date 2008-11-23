@@ -1,0 +1,8 @@
+<%= mui_window(:title => 'Update Category') do %>
+  <%= mui_form(:category, :action => slice_url(:category_update, :category_id => @category.id)) do %>
+    <%= partial(:form) %>
+    <%= mui_block do %>
+      <%= mui_button(:title => 'Update', :submit => true, :tone => 'positive')%>
+    <% end =%>
+  <% end =%>
+<% end =%>

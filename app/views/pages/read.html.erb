@@ -1,0 +1,19 @@
+<% throw_content :feeds do %>
+  <link href="<%= slice_url :feed %>" rel="alternate" title="RSS" type="application/rss+xml"/>
+<% end %>
+<%= merb_words_password_status %>
+<%= mui_grid(:cell_valign => 'bottom', :columns => 2) do %>
+  <%= mui_cell(:width => '100%') do %>
+    <%= mui_block(:title => @page.title, :title_size => '3em') %>
+  <% end =%>
+  <%= mui_cell(:wrap => false) do %>
+    <%= mui_button(:title => '&larr; Back', :url => slice_url(:index)) %>
+    <% if merb_words_password? %>
+      <%= mui_button(:title => 'Update', :url => slice_url(:update, :page_id => @page.id), :window => 'open') %>
+      <%= mui_button(:title => '&#215;', :tone => 'negative', :url => slice_url(:delete, :page_id => @page.id), :window => 'open') %>
+    <% end %>
+  <% end =%>
+<% end =%>
+<%= mui_block do %>
+  <%= merb_words_body(@page.body) %>
+<% end =%>

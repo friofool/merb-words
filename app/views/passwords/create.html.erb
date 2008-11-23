@@ -1,0 +1,8 @@
+<%= mui_window(:title => 'Create Password') do %>
+  <%= mui_form(:password, :action => slice_url(:password_create)) do %>
+    <%= partial(:form) %>
+    <%= mui_block do %>
+      <%= mui_button(:title => 'Create', :submit => true, :tone => 'positive')%>
+    <% end =%>
+  <% end =%>
+<% end =%>

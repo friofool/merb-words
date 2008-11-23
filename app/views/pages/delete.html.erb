@@ -1,0 +1,6 @@
+<%= mui_window(:title => 'Delete Page') do %>
+  <%= mui_block do %>Are you sure that you want to delete <%= @page.title %>?<% end =%>
+  <%= mui_block do %>
+    <%= mui_delete(:title => 'Delete', :url => slice_url(:delete, :page_id => @page.id)) %>
+  <% end =%>
+<% end =%>

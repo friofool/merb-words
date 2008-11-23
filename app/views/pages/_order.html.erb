@@ -1,0 +1,17 @@
+<%= mui_divider %>
+<%= mui_block(:title => 'Sort by', :title_size => '1em') %>
+<% orders.each do |order| %>
+  <div>
+    <% if order_property == order.property %>
+      <span style="font-size:0.85em;"><%= order.title %></span>
+    <% else %>
+      <%
+        attributes = {}
+        attributes[:category_id] = params[:category_id]
+        attributes[:order_property] = order.property
+        attributes[:search] = params[:search]
+      %>
+      <%= mui_link(:title => order.title, :title_size => '0.85em', :url => slice_url(:index, attributes)) %>
+    <% end %>
+  </div>
+<% end %>

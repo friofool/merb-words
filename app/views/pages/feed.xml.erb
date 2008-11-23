@@ -1,0 +1,7 @@
+<% @pages.each do |page| %>
+  <item>
+    <title><%= page.title %></title>
+    <link><%= slice_url(:read, page.id) %></link>
+    <description><%= merb_words_truncate(:body => page.body) %></description>
+  </item>
+<% end %>
