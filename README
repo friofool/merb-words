@@ -1,13 +1,15 @@
 Prerequisite:
 
-Install Merb UI (merb-ui)
+http://github.com/uipoet/merb-ui/tree/master
 
 ------------------------------------------------------------------------------
 
 Installation:
 
 1.) Install merb-words gem.
-sudo gem install merb-words
+git clone git://github.com/uipoet/merb-words.git
+cd merb-words
+sudo rake install
 
 2.) Navigate to your merb application.
 cd ~/your_merb_app/
