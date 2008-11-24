@@ -1,9 +1,5 @@
 module Merb::MerbWords::ApplicationHelper
 
-  def merb_words_body(body)
-    body.gsub(/\r\n|\r|\n/, '<br/>')
-  end
-
   def merb_words_categories(options = {})
     attributes = {}
     attributes[:class] = 'mui_menu'
@@ -44,16 +40,16 @@ module Merb::MerbWords::ApplicationHelper
     end
   end
 
+  def merb_words_paragraph(body)
+    body.gsub(/\r\n|\r|\n/, '<br/>')
+  end
+
   def merb_words_truncate(options = {})
-    limit = options[:limit] || 50
-    title = options[:title] || '...continued'
-    page_parsed = options[:body].gsub(/<\/?[^>]*>/, '')
-    page_split = page_parsed.split(/ /)
-    if page_split.size > limit
-      page_split.first(limit).join(' ') + tag(:i, title, :class => 'mui_truncate')
-    else
-      page_parsed
-    end
+    characters = options[:characters] || 256
+    title = options[:title] || ' ...continued'
+    body = options[:body].gsub(/<\/?[^>]*>/, '')
+    body = body[0, characters] + tag(:i, title, :class => 'mui_truncate') if body.size > characters
+    merb_words_paragraph(body)
   end
 
 end
