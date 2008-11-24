@@ -1,49 +1,57 @@
-Merb Words
+Prerequisite:
 
-Merb Publishing for Your Words
-
-------------------------------------------------------------------------------
-
-To see all available tasks for Merb Words run:
-
-rake -T slices:merb_words
+Install Merb UI (merb-ui)
 
 ------------------------------------------------------------------------------
 
-Instructions for installation:
+Installation:
 
-file: config/dependencies.rb
+1.) Install merb-words gem.
+sudo gem install merb-words
 
-# add the slice as a regular dependency
+2.) Navigate to your merb application.
+cd ~/your_merb_app/
+
+3.) Add to your dependencies file.
+vim config/dependencies.rb
+a
 
 dependency 'merb-words'
 
-# optionally configure the plugins in a before_app_loads callback
+esc : wq
+
+4.) Add options to your init file in the before_app_loads callback.
+vim config/init.rb
+a
 
 Merb::BootLoader.before_app_loads do
-
-  Merb::Slices::config[:merb_words][:option] = value
-
+  Merb::Slices::config[:merb_words][:title] = 'Words' #Title of the index page and/or tab.
 end
 
-file: config/router.rb
+esc : wq
 
-# add the slice
+5.) Add to your router file.
+vim config/router.rb
+a
 
 slice(:merb_words)
 
-# run the following rake task:
+esc : wq
 
-rake slices:merb_words:install
+6.) Start your merb application and browse.
+http://your_domain/photos
 
 ------------------------------------------------------------------------------
 
-You can put your application-level overrides in:
+Advanced:
 
-host-app/slices/merb-words/app - controllers, models, views ...
+# List all available tasks:
+rake -T slices:merb_words
 
-Templates are located in this order:
+# Put your application-level overrides in:
+host-app/slices/merb-words/
 
+# Templates are located in this order:
 1. host-app/slices/merb-words/app/views/*
 2. gems/merb-words/app/views/*
 3. host-app/app/views/*
