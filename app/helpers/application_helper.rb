@@ -48,7 +48,7 @@ module Merb::MerbWords::ApplicationHelper
     characters = options[:characters] || 256
     title = options[:title] || ' ...continued'
     body = options[:body].gsub(/<\/?[^>]*>/, '')
-    body = body[0, characters] + tag(:i, title, :class => 'mui_truncate') if body.size > characters
+    body = body[0, characters] + tag(:span, title, :class => 'mui_truncate') if body.size > characters
     merb_words_paragraph(body)
   end
 

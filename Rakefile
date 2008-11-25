@@ -23,6 +23,7 @@ spec = Gem::Specification.new do |s|
   s.author = AUTHOR
   s.email = EMAIL
   s.homepage = HOMEPAGE
+  s.add_dependency('merb', '~> 1.0.0')
   s.add_dependency('merb-ui', '>= 1.0')
   s.require_path = 'lib'
   s.files = %w(LICENSE README Rakefile) + Dir.glob("{lib,app,public}/**/*")
