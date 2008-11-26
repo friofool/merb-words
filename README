@@ -1,15 +1,7 @@
-Prerequisite:
-
-http://github.com/uipoet/merb-ui/tree/master
-
-------------------------------------------------------------------------------
-
 Installation:
 
 1.) Install merb-words gem.
-git clone git://github.com/uipoet/merb-words.git
-cd merb-words
-sudo rake install
+sudo gem install merb-words
 
 2.) Navigate to your merb application.
 cd ~/your_merb_app/
@@ -41,7 +33,7 @@ slice(:merb_words)
 esc : wq
 
 6.) Start your merb application and browse.
-http://your_domain/photos
+http://your_domain/words
 
 ------------------------------------------------------------------------------
 
