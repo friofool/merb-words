@@ -8,7 +8,7 @@ AUTHOR = 'uipoet'
 EMAIL = 'dont.tase@me.com'
 HOMEPAGE = 'http://uipoet.com/projects'
 SUMMARY = 'Word Management for Merb'
-GEM_VERSION = '0.1.1'
+GEM_VERSION = '0.1.2'
 
 spec = Gem::Specification.new do |s|
   s.rubyforge_project = AUTHOR
@@ -23,7 +23,7 @@ spec = Gem::Specification.new do |s|
   s.email = EMAIL
   s.homepage = HOMEPAGE
   s.add_dependency('merb-ui', '>= 0.1')
-  s.add_dependency('merb-datamapper', '~> 1.0.0')
+  s.add_dependency('merb_datamapper', '~> 1.0.0')
   s.require_path = 'lib'
   s.files = %w(LICENSE README Rakefile) + Dir.glob("{lib,app}/**/*")
 end
