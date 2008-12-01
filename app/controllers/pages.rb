@@ -67,7 +67,9 @@ class MerbWords::Pages < MerbWords::Application
   end
 
   def update
-    display(@page = Page.get!(params[:page_id]), :layout => false)
+    @page = Page.get!(params[:page_id])
+    @page.body = escape_xml(@page.body)
+    display(@page, :layout => false)
   end
 
   def update_put
