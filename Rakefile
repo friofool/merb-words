@@ -7,11 +7,15 @@ spec = Gem::Specification.new do |s|
   s.add_dependency('merb_datamapper', '~> 1.0.0')
   s.add_dependency('merb-slices', '~> 1.0.0')
   s.add_dependency('merb-ui', '>= 0.3')
+  s.author = 'UiPoet'
+  s.email = 'dont.tase@me.com'
   s.files = FileList['app/**/*', 'lib/**/*', '[A-Z]*'].to_a
+  s.has_rdoc = true
+  s.homepage = 'http://uipoet.com'
   s.name = 'merb-words'
   s.rubyforge_project = 'uipoet'
   s.summary = 'Word Management for Merb'
-  s.version = '0.3'
+  s.version = '0.3.1'
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
