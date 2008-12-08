@@ -5,52 +5,12 @@ if defined?(Merb::Plugins)
   load_dependency 'merb-ui'
   Merb::Plugins.add_rakefiles "merb-words/merbtasks", "merb-words/slicetasks", "merb-words/spectasks"
 
-  # Register the Slice for the current host application
   Merb::Slices::register(__FILE__)
 
-  # Slice configuration - set this in a before_app_loads callback.
-  # By default a Slice uses its own layout, so you can swicht to
-  # the main application layout or no layout at all if needed.
-  #
-  # Configuration options:
-  # :layout - the layout to use; defaults to :merb-words
-  # :mirror - which path component types to use on copy operations; defaults to all
   Merb::Slices::config[:merb_words][:layout] ||= :application
 
-  # All Slice code is expected to be namespaced inside a module
   module MerbWords
 
-    # Slice metadata
-    self.description = "Merb UI Words"
-    self.version = "1.0"
-    self.author = "UI Poet"
-
-    # Stub classes loaded hook - runs before LoadClasses BootLoader
-    # right after a slice's classes have been loaded internally.
-    def self.loaded
-    end
-
-    # Initialization hook - runs before AfterAppLoads BootLoader
-    def self.init
-    end
-
-    # Activation hook - runs after AfterAppLoads BootLoader
-    def self.activate
-    end
-
-    # Deactivation hook - triggered by Merb::Slices.deactivate(MerbWords)
-    def self.deactivate
-    end
-
-    # Setup routes inside the host application
-    #
-    # @param scope<Merb::Router::Behaviour>
-    #  Routes will be added within this scope (namespace). In fact, any
-    #  router behaviour is a valid namespace, so you can attach
-    #  routes at any level of your router setup.
-    #
-    # @note prefix your named routes with :merb_words_
-    #   to avoid potential conflicts with global named routes.
     def self.setup_router(scope)
       scope.to(:controller => 'pages') do |p|
         p.match('/').to(:action => 'index').name(:index)
@@ -87,21 +47,6 @@ if defined?(Merb::Plugins)
 
   end
 
-  # Setup the slice layout for MerbWords
-  #
-  # Use MerbWords.push_path and MerbWords.push_app_path
-  # to set paths to merb-words-level and app-level paths. Example:
-  #
-  # MerbWords.push_path(:application, MerbWords.root)
-  # MerbWords.push_app_path(:application, Merb.root / 'slices' / 'merb-words')
-  # ...
-  #
-  # Any component path that hasn't been set will default to MerbWords.root
-  #
-  # Or just call setup_default_structure! to setup a basic Merb MVC structure.
   MerbWords.setup_default_structure!
-
-  # Add dependencies for other MerbWords classes below. Example:
-  # dependency "merb-words/other"
 
 end
