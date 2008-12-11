@@ -7,7 +7,7 @@ class MerbWords::Pages < MerbWords::Application
   before(:merb_words_orders, :only => [:index])
 
   def index
-    if Page.first
+    if Page
       filters = {}
       filters[:publish] = true unless merb_words_password?
       @order_property = params[:order_property] || MerbWords[:order] || 'created_at'

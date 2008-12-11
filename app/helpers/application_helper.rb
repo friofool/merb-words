@@ -13,7 +13,7 @@ module Merb::MerbWords::ApplicationHelper
   end
 
   def merb_words_orders
-    unless Order.first
+    unless Order
       Order.create!(:property => 'created_at', :title => 'Date Created')
       Order.create!(:property => 'updated_at', :title => 'Date Updated')
       Order.create!(:property => 'title', :title => 'Title')

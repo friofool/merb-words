@@ -2,7 +2,8 @@ if defined?(Merb::Plugins)
 
   $:.unshift File.dirname(__FILE__)
 
-  load_dependency 'merb-ui'
+  #load_dependency 'merb-ui'
+  dependencies 'merb-ui'
   Merb::Plugins.add_rakefiles "merb-words/merbtasks", "merb-words/slicetasks", "merb-words/spectasks"
 
   Merb::Slices::register(__FILE__)
